@@ -1,0 +1,153 @@
+.chef-claude-page {
+  $color-orange: #D17557;
+  $color-orange-200: #cc6e4e;
+
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: Inter, sans-serif;
+
+  .chef-claude-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    height: 60px;
+    background-color: $color-orange;
+    box-shadow: 0 1px 3px 0 rgba(#000, 10%), 0 1px 2px 0 rgba(#000, 6%);
+
+    @media (width >= 640px) {
+      height: 80px;
+    }
+
+    img {
+      width: 30px;
+      
+      @media (width >= 640px) {
+        width: 50px;
+      }
+    }
+
+    div {
+      font-weight: 400;
+      font-size: 20px;
+
+      @media (width >= 640px) {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .chef-claude-main {
+    padding: 20px 15px;
+    border: 1px solid #383838;
+
+    @media (width >= 640px) {
+      padding: 30px;
+    }
+
+    .add-ingredient-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @media (width >= 640px) {
+        flex-direction: row;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid #a1a1a1;
+        padding: 9px 13px;
+        box-sizing: border-box;
+        height: 35px;
+
+        &:focus {
+          outline: none;
+          border-color: $color-orange;
+        }
+      }
+
+      button {
+        width: 100%;
+
+        &::before {
+          content: "+";
+          margin-right: 5px;
+        }
+      }
+    }
+
+    section {
+      padding: 24px 0;
+    }
+
+    .ingredients-title {
+      margin: 0;
+    }
+
+    .ingredients-list {
+      margin-top: 18px;
+      margin-bottom: 0;
+
+      li {
+        color: #fff;
+        line-height: 28px;
+      }
+    }
+
+    .get-recipe-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 8px;
+      background: #343434;
+      padding: 24px 28px;
+      margin-top: 48px;
+
+      h2 {
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 24px;
+        margin: 0 0 10px;
+      }
+
+      p {
+        margin: 0;
+        color: #fff;
+        font-size: 0.875rem;
+        line-height: 20px;
+      }
+    }
+
+    .suggested-recipe-wrapper {
+      line-height: 28px;
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: #fff;
+
+      ul li,
+      ol li {
+        margin-bottom: 8px;
+      }
+    }
+
+    // stylelint-disable no-descending-specificity
+    button {
+      font-family: inherit;
+      border-radius: 6px;
+      border: none;
+      background-color: $color-orange;
+      color: #FAFAF8;
+      font-size: 0.875rem;
+      font-weight: 700;
+      height: 35px;
+      padding: 5px 17px;
+      cursor: pointer;
+
+      &:hover, &:focus {
+        background-color: $color-orange-200;
+      }
+    }
+  }
+}

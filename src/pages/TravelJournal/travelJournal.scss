@@ -1,0 +1,103 @@
+.travel-page {
+  max-width: 600px;
+  margin: 0 auto;
+
+  .travel-header {
+    background: #F55A5A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 55px;
+
+    img {
+      width: 24px;
+      margin-right: 7px;
+    }
+
+    div {
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-family: Inter, sans-serif;
+    }
+  }
+
+  .travel-main {
+    padding: 20px;
+    border: 1px solid #383838;
+  }
+
+  .journal-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 15px 0;
+
+    @media (width >= 640px) {
+      flex-direction: row;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #383838;
+    }
+
+    .main-image-container {
+      width: 125px;
+      height: 168px;
+      overflow: hidden;
+      border-radius: 5px;
+      flex-shrink: 0;
+
+      .main-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .info-container {
+      .marker {
+        width: 7px;
+        margin-right: 4px;
+      }
+
+      .country {
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        margin-right: 12px;
+      }
+
+      a {
+        color: #b7b7b7;
+        font-size: 0.7rem;
+        text-decoration: underline;
+
+        &:hover, &:focus {
+          color: #F55A5A;
+        }
+      }
+
+      .entry-title {
+        margin-top: 7px;
+        margin-bottom: 17px;
+      }
+
+      p {
+        &.trip-dates {
+          font-weight: bold;
+        }
+
+        &.entry-text {
+          margin: 0;
+          line-height: 1.5;
+          font-size: 0.8rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

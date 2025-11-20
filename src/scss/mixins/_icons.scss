@@ -1,0 +1,58 @@
+// Icomoon.
+@use '../settings/icons';
+@use "sass:map";
+@use '../../assets/fonts/icomoon/style.css';
+
+// Base icon rules.
+@mixin kinetic-icons() {
+  font-family: icomoon, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+@mixin icon($icon, $replace: false, $map: icons.$icons) {
+  @if map.has-key($map, $icon) {
+    $icon: map.get($map, $icon);
+  }
+
+  @if $replace == false {
+    @include kinetic-icons;
+  }
+
+  content: '#{$icon}';
+}
+
+/// Add an icon to the before pseudo class
+@mixin icon-before($icon, $replace: false) {
+  &::before {
+    @include icon($icon, $replace);
+    @content;
+  }
+}
+
+/// Add an icon to the after pseudo class
+@mixin icon-after($icon, $replace: false) {
+  &::after {
+    @include icon($icon, $replace);
+    @content;
+  }
+}
+
+/// Replace text with icon
+@mixin replace-text-with-icon($icon, $font-size: 1rem) {
+  font-size: 0;
+  text-decoration: none;
+
+  @include icon-before($icon) {
+    font-size: $font-size;
+    @content;
+  }
+}

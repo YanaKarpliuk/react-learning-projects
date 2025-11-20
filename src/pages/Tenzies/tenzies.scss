@@ -1,0 +1,89 @@
+.tenzies-page {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0B2434;
+  }
+
+  .tenzies-wrapper {
+    padding: 24px;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 320px;
+    background-color: #F5F5F5;
+    text-align: center;
+    box-sizing: border-box;
+
+    @media (width >= 768px) {
+      padding: 35px;
+    }
+
+    .title {
+      color: #2B283A;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .description {
+      color: #4A4E74;
+      font-size: 14px;
+      margin: 0;
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+
+    .dice-wrapper {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+
+      .die-button {
+        margin: 0;
+        padding: 0;
+        aspect-ratio: 1;
+        border-radius: 4px;
+        border: 0;
+        background-color: white;
+        font-size: 20px;
+        font-weight: 700;
+        color: #2B283A;
+        text-align: center;
+        vertical-align: center;
+        box-shadow: 0 2px 2px 0 rgba(#000, 15%);
+        transition: 250ms;
+
+        &:focus, &:hover {
+          box-shadow: 0 3px 2px 0 rgba(#000, 20%);
+        }
+
+        &.selected {
+          background-color: #59E391;
+        }
+      }
+    }
+
+    .roll-button {
+      padding: 10px 20px;
+      margin-top: 24px;
+      border: 0;
+      border-radius: 4px;
+      background-color: #5035FF;
+      font-size: 16px;
+      color: white;
+      font-weight: 700;
+      transition: 250ms;
+
+      &:focus, &:hover {
+        background-color: #4026f8;
+      }
+    }
+  }
+}
