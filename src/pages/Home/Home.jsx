@@ -30,6 +30,9 @@ export default function Home() {
             <li>
               <NavLink to="/pizza-menu" end>Pizza Menu</NavLink>
             </li>
+            <li>
+              <NavLink to="/travel-list" end>Travel List</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

@@ -10,6 +10,7 @@ const Hangman = lazy(() => import('./Pages/Hangman/Hangman.jsx'));
 const MemoryGame = lazy(() => import('./Pages/MemoryGame/MemoryGame.jsx'));
 const PizzaMenu = lazy(() => import('./Pages/PizzaMenu/PizzaMenu.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
+import TravelList from "./pages/TravelList/TravelList";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="hangman" element={<Hangman />} />
           <Route path="memory-game" element={<MemoryGame />} />
           <Route path="pizza-menu" element={<PizzaMenu />} />
+          <Route path="travel-list" element={<TravelList />} />
         </Route>
         <Route path="/">
           <Route index element={<Home />} />

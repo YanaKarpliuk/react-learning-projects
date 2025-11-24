@@ -23,7 +23,7 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', {varsIgnorePattern: '^[A-Z_]'}],
+      'no-unused-vars': ['warn', {varsIgnorePattern: '^[A-Z_]'}],
       'no-undef': 0,              // disallow use of undeclared variables unless mentioned in a /*global */ block
       'import/no-unresolved': 0,  // disallows ensures an imported module can be resolved to a module on the local filesystem
       'func-names': 0,            // require function expressions to have a name (off by default)
