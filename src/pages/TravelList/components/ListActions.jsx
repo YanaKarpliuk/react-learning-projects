@@ -1,18 +1,13 @@
-import { useState } from "react";
-
-export default function ListActions({sortTravelItems, removeAllTravelItems}) {
-  const [selectedValue, setSelectedValue] = useState('order');
-
+export default function ListActions({sortValue, updateSortValue, removeAllTravelItems}) {
   function handleSelectChange(e) {
-    setSelectedValue(e.target.value);
-    sortTravelItems(e.target.value)
+    updateSortValue(e.target.value);
   }
 
   return (
       <div className='travel-list-actions'>
         <div className='sort-by-wrapper'>
           <label htmlFor='sort-by' className='sr-only'>Sort by</label>
-          <select name='sort-by' id='sort-by' value={selectedValue} onChange={handleSelectChange}>
+          <select name='sort-by' id='sort-by' value={sortValue} onChange={handleSelectChange}>
             <option value='order'>Sort by input order</option>
             <option value='quantity'>Sort by input quantity</option>
             <option value='name'>Sort by input name</option>
@@ -20,7 +15,7 @@ export default function ListActions({sortTravelItems, removeAllTravelItems}) {
           </select>
         </div>
         <div className='clear-btn-wrapper'>
-          <button onClick={removeAllTravelItems}>Clear list</button>
+          <button onClick={removeAllTravelItems} aria-label='Clear all travel items'>Clear list</button>
         </div>
       </div>
   )

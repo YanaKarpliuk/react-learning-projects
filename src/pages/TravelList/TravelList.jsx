@@ -13,24 +13,26 @@ export default function TravelList() {
       id: nanoid(),
       name: 'Passports',
       quantity: 2,
-      checked: true,
-      date: '2025-11-24T11:30:26.445Z'
+      checked: true
     },
     {
       id: nanoid(),
       name: 'Socks',
       quantity: 12,
-      checked: false,
-      date: '2025-11-24T11:31:26.445Z'
+      checked: false
     },
     {
       id: nanoid(),
       name: 'Charger',
       quantity: 1,
-      checked: false,
-      date: '2025-11-24T11:32:26.445Z'
+      checked: false
     }
   ])
+  const [sortValue, setSortValue] = useState('order');
+
+  function updateSortValue(sort) {
+    setSortValue(sort);
+  }
 
   function addTravelItem(name, quantity) {
     setTravelItems((prev) => (
@@ -40,8 +42,7 @@ export default function TravelList() {
             id: nanoid(),
             name,
             quantity,
-            checked: false,
-            date: new Date().toISOString()
+            checked: false
           }
         ]
     ))
@@ -56,29 +57,23 @@ export default function TravelList() {
   function removeAllTravelItems() {
     let userConfirmed = confirm("Are you sure you want to delete all items?");
 
-    if (userConfirmed) {
-      setTravelItems([])
+    if (userConfirmed) setTravelItems([])
+  }
+
+  let sortedTravelItems = [...travelItems]
+
+  sortedTravelItems.sort((a, b) => {
+    switch (sortValue) {
+      case 'name':
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+      case 'quantity':
+        return Number(a.quantity) - Number(b.quantity)
+      case 'packed':
+        return Number(a.checked) - Number(b.checked)
+      default:
+        return travelItems
     }
-  }
-
-  function sortTravelItems(sort) {
-    const newTravelItemsArr = [...travelItems]
-
-    newTravelItemsArr.sort((a, b) => {
-      switch (sort) {
-        case 'name':
-          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-        case 'quantity':
-          return Number(a.quantity) - Number(b.quantity)
-        case 'packed':
-          return Number(a.checked) - Number(b.checked)
-        default:
-          return a.date.localeCompare(b.date);
-      }
-    });
-
-    setTravelItems(newTravelItemsArr)
-  }
+  });
 
   return (
       <div className={'travel-list-page'}>
@@ -88,12 +83,13 @@ export default function TravelList() {
               addTravelItem={addTravelItem}
           />
           <List
-              items={travelItems}
+              items={sortedTravelItems}
               removeTravelItem={removeTravelItem}
               setTravelItems={setTravelItems}
           />
           <ListActions
-              sortTravelItems={sortTravelItems}
+              sortValue={sortValue}
+              updateSortValue={updateSortValue}
               removeAllTravelItems={removeAllTravelItems}
           />
         </main>

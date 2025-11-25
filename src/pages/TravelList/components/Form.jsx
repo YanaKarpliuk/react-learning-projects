@@ -18,11 +18,11 @@ export default function Form({addTravelItem}) {
           What do you need for your 😍 trip?
         </div>
         <div className='form-item form-input-number'>
-          <label htmlFor='quantity'></label>
+          <label htmlFor='quantity' className='sr-only'>Quantity</label>
           <input type='number' id='quantity' value={quantityValue} onInput={(e) => setQuantityValue(e.target.value > 0 ? e.target.value : '1')} />
         </div>
         <div className='form-item form-input-text'>
-          <label htmlFor='travelItem'></label>
+          <label htmlFor='travelItem' className='sr-only'>Name</label>
           <input type='text' id='travelItem' placeholder='Item...' value={textValue} onInput={(e) => setTextValue(e.target.value)}/>
         </div>
         <div className='form-actions'>

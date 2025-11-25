@@ -2,7 +2,7 @@ import ListItem from "./ListItem";
 
 export default function List({items, removeTravelItem, setTravelItems}) {
   return (
-      <div className='travel-list-items'>
+      <div className='travel-list-items' aria-live="polite">
         <ul>
           {items.map((item) => (
               <ListItem

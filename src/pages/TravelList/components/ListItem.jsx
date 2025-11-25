@@ -1,18 +1,22 @@
 export default function ListItem({quantity, name, checked, id, removeTravelItem, setTravelItems}) {
+  function handleInputChange() {
+    setTravelItems(prev => prev.map(item => (
+        item.id === id
+            ? {...item, checked: !item.checked}
+            : item
+    )))
+  }
+
   return (
       <li className='travel-list-item'>
         <div className='travel-list-item-wrapper'>
           <input
               className={`${checked ? 'checked' : 'not-checked'}`}
               type='checkbox'
-              value={name.toLowerCase()}
+              value={checked}
               id={id}
               checked={checked}
-              onChange={() => setTravelItems(prev => prev.map(item => {
-                return item.id === id
-                    ? {...item, checked: !item.checked}
-                    : item
-              }))}
+              onChange={handleInputChange}
           />
           <label htmlFor={id}>{`${quantity} ${name}`}</label>
         </div>
