@@ -51,7 +51,7 @@ export default function EatNSplit() {
       setSelectedFriend(friends[friends.length - 1])
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [friends])
+  }, [friends.length])
 
   return (
       <div className={'eat-split-page'}>

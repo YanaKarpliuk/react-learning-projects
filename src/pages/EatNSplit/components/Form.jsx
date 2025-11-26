@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Form({setFriends, selectedFriend}) {
   const [bill, setBill] = useState(0)
@@ -6,6 +6,8 @@ export default function Form({setFriends, selectedFriend}) {
   const [paying, setPaying] = useState('you')
 
   const friendExpense = bill - yourExpense
+
+  if (yourExpense > bill) setYourExpense(bill)
 
   function submitForm(e) {
     e.preventDefault()
@@ -28,6 +30,12 @@ export default function Form({setFriends, selectedFriend}) {
     setPaying('you')
   }
 
+  useEffect(() => {
+    setBill(0)
+    setYourExpense(0)
+    setPaying('you')
+  }, [selectedFriend])
+
   return (
       <form className='split-bill-form' onSubmit={submitForm}>
         <h2>
@@ -35,19 +43,40 @@ export default function Form({setFriends, selectedFriend}) {
         </h2>
         <div className='form-item form-input-number'>
           <label htmlFor='bill'>Bill value</label>
-          <input type='number' id='bill' value={bill} onInput={(e) => setBill(e.target.value >= 0 ? e.target.value : 0)} />
+          <input
+              type='number'
+              id='bill'
+              value={bill.toString()}
+              onInput={(e) => {
+                if (Number(e.target.value) >= 0) setBill(Number(e.target.value))
+              }}
+          />
         </div>
         <div className='form-item form-input-number'>
           <label htmlFor='yourExpense'>Your expense</label>
-          <input type='number' id='yourExpense' value={yourExpense} onInput={(e) => setYourExpense(e.target.value >= 0 ? e.target.value : 0)} />
+          <input
+              type='number'
+              id='yourExpense'
+              value={yourExpense.toString()}
+              onInput={(e) => {
+                if (Number(e.target.value) >= 0 && Number(e.target.value) <= bill) setYourExpense(Number(e.target.value))
+              }}
+          />
         </div>
         <div className='form-item form-input-number'>
           <label htmlFor='friendExpense'>{selectedFriend.name}'s expense</label>
-          <input type='number' id='friendExpense' value={friendExpense} readOnly={true} />
+          <input
+              type='number'
+              id='friendExpense'
+              value={friendExpense}
+              readOnly={true}
+          />
         </div>
         <div className='form-item form-input-select'>
           <label htmlFor='paying'>Who is paying the bill?</label>
-          <select value={paying} onChange={(e) => setPaying(e.target.value)}>
+          <select
+              value={paying}
+              onChange={(e) => setPaying(e.target.value)}>
             <option value='you'>You</option>
             <option value='friend'>{selectedFriend.name}</option>
           </select>
