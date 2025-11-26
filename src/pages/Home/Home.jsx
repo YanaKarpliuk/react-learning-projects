@@ -36,6 +36,9 @@ export default function Home() {
             <li>
               <NavLink to="/eat-n-split" end>Eat-'N-Split</NavLink>
             </li>
+            <li>
+              <NavLink to="/usepopcorn" end>usePopcorn</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
