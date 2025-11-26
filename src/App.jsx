@@ -9,6 +9,7 @@ const Tenzies = lazy(() => import('./Pages/Tenzies/Tenzies.jsx'));
 const Hangman = lazy(() => import('./Pages/Hangman/Hangman.jsx'));
 const MemoryGame = lazy(() => import('./Pages/MemoryGame/MemoryGame.jsx'));
 const PizzaMenu = lazy(() => import('./Pages/PizzaMenu/PizzaMenu.jsx'));
+const EatNSplit = lazy(() => import('./Pages/EatNSplit/EatNSplit.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import TravelList from "./pages/TravelList/TravelList";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="memory-game" element={<MemoryGame />} />
           <Route path="pizza-menu" element={<PizzaMenu />} />
           <Route path="travel-list" element={<TravelList />} />
+          <Route path="eat-n-split" element={<EatNSplit />} />
         </Route>
         <Route path="/">
           <Route index element={<Home />} />
