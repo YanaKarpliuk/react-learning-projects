@@ -158,5 +158,60 @@
         font-size: 14px;
       }
     }
+
+    // Star rating.
+    .star-rating-wrapper {
+      background: var(--color-background-100);
+      border-radius: 14px;
+      padding: 24px;
+
+      .star-rating {
+        display: grid;
+        grid-template-columns: 1fr 24px;
+        align-items: center;
+        gap: 10px;
+
+        .stars {
+          display: grid;
+          grid-template-columns: repeat(10, 1fr);
+          justify-content: space-between;
+
+          .star-btn {
+            border: 0;
+            background: transparent;
+            padding: 0;
+            display: block;
+
+            svg {
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+
+        .rating {
+          font-size: 16px;
+          font-weight: 600;
+          color: #fcc419;
+        }
+      }
+
+      .add-to-list-btn {
+        margin-top: 24px;
+        padding: 12px 24px;
+        width: 100%;
+        border: 0;
+        border-radius: 40px;
+        background: var(--color-primary);
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        transition: 250ms;
+
+        &:hover, &:focus {
+          background: var(--color-primary-light);
+        }
+      }
+    }
   }
 }
