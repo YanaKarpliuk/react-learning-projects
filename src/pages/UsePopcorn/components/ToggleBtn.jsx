@@ -1,9 +1,13 @@
-export default function ToggleBtn({isOpen, onClick, listName}) {
+export default function ToggleBtn({isOpen, setIsOpen}) {
+  function handleClick() {
+    setIsOpen(prev => !prev)
+  }
+
   return (
       <button
-          aria-label={isOpen ? `Close the ${listName}` : `Show the ${listName}`}
+          aria-label={isOpen ? 'Hide the column content' : 'Show the column content'}
           className='toggle-list-btn'
-          onClick={onClick}
+          onClick={handleClick}
       >
         {isOpen ? '-' : '+'}
       </button>

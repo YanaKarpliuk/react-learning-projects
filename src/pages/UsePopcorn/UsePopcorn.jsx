@@ -1,8 +1,13 @@
 import './usePopcorn.scss';
-import Header from "./components/Header.jsx";
+import Header from "./components/layouts/Header.jsx";
 import MovieList from "./components/MovieList.jsx";
-import WatchedMovieList from "./components/WatchedMovieList.jsx";
+import WatchedMovieSummary from "./components/WatchedMovieSummary.jsx";
+import Column from "./components/layouts/Column.jsx";
 import { useState } from "react";
+import Search from "./components/Search.jsx";
+import FoundResults from "./components/FoundResults.jsx";
+import Logo from "./components/Logo";
+import Main from "./components/layouts/Main.jsx";
 
 const tempMovieData = [
   {
@@ -52,20 +57,29 @@ const tempWatchedData = [
 ];
 
 export default function UsePopcorn() {
-  const [allMovies, setAllMovies] = useState(tempMovieData)
+  const [movies, setMovies] = useState(tempMovieData)
   const [watchedMovies, setWatchedMovies] = useState(tempWatchedData)
+  const [searchQuery, setSearchQuery] = useState('')
 
   return (
       <div className={'usepopcorn-page'}>
-        <Header results={3}/>
-        <main>
-          <div className='column'>
-            <MovieList movies={allMovies}/>
-          </div>
-          <div className='column'>
-            <WatchedMovieList movies={watchedMovies}/>
-          </div>
-        </main>
+        <Header>
+          <Logo/>
+          <Search
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+          />
+          <FoundResults results={movies.length}/>
+        </Header>
+        <Main>
+          <Column>
+            <MovieList movies={movies}/>
+          </Column>
+          <Column>
+            <WatchedMovieSummary movies={watchedMovies}/>
+            <MovieList movies={watchedMovies} isWatched={true}/>
+          </Column>
+        </Main>
       </div>
   )
 }

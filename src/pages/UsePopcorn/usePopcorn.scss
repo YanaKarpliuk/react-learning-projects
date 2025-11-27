@@ -12,13 +12,17 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   // Header.
-  header {
+  .usepopcorn-header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
+    gap:12px;
     padding: 24px;
     background-color: var(--color-primary);
     border-radius: 14px;
+
+    @media screen and (width >=768px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
     h1 {
       margin: 0;
@@ -40,6 +44,7 @@
         color: var(--color-text);
         background-color: var(--color-primary-light);
         width: 100%;
+        box-sizing: border-box;
 
         &::placeholder {
           color: var(--color-text-dark);
@@ -60,7 +65,7 @@
   }
 
   // Main
-  main {
+  .usepopcorn-main {
     display: grid;
     gap: 24px;
     padding: 24px 0;
@@ -132,27 +137,25 @@
       }
     }
 
-    // Watched movies.
-    .watched-movies-wrapper {
-      .watched-movie-summary {
-        background: var(--color-background-100);
-        border-radius: 14px;
-        padding: 12px 24px;
+    // Watched movies summary.
+    .watched-movie-summary {
+      background: var(--color-background-100);
+      border-radius: 14px;
+      padding: 12px 24px;
 
-        h2 {
-          margin: 0;
-          text-transform: uppercase;
-          font-size: 18px;
-        }
+      h2 {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 18px;
+      }
 
-        .watched-data {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 10px;
-          font-size: 14px;
-        }
+      .watched-data {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 10px;
+        font-size: 14px;
       }
     }
   }
