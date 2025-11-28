@@ -1,14 +1,12 @@
 export default function ListItem({friend, setSelectedFriend, selectedFriend}) {
   function handleFriendSelect() {
-    if (selectedFriend && selectedFriend.id === friend.id) {
-      setSelectedFriend(null)
-    } else {
-      setSelectedFriend(friend)
-    }
+    selectedFriend?.id === friend.id
+        ? setSelectedFriend(null)
+        : setSelectedFriend(friend)
   }
 
   return (
-      <li className={`list-item-wrapper ${selectedFriend && selectedFriend.id === friend.id ? 'is-selected' : ''}`}>
+      <li className={`list-item-wrapper ${selectedFriend?.id === friend.id ? 'is-selected' : ''}`}>
         <div className='list-item'>
           <img src={friend.image} alt={friend.name}/>
           <div className='info-wrapper'>
@@ -26,8 +24,8 @@ export default function ListItem({friend, setSelectedFriend, selectedFriend}) {
         </div>
         <button
             onClick={handleFriendSelect}
-            aria-label={selectedFriend && selectedFriend.id === friend.id ? `Close the ${friend.name}'s bill form` : `Select the ${friend.name}'s bill form`}>
-          {selectedFriend && selectedFriend.id === friend.id ? 'Close' : 'Select'}
+            aria-label={selectedFriend?.id === friend.id ? `Close the ${friend.name}'s bill form` : `Select the ${friend.name}'s bill form`}>
+          {selectedFriend?.id === friend.id ? 'Close' : 'Select'}
         </button>
       </li>
   )

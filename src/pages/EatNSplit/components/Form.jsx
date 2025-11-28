@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Form({setFriends, selectedFriend}) {
   const [bill, setBill] = useState(0)
@@ -29,12 +29,6 @@ export default function Form({setFriends, selectedFriend}) {
     setYourExpense(0)
     setPaying('you')
   }
-
-  useEffect(() => {
-    setBill(0)
-    setYourExpense(0)
-    setPaying('you')
-  }, [selectedFriend])
 
   return (
       <form className='split-bill-form' onSubmit={submitForm}>

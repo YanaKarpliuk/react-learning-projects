@@ -64,6 +64,10 @@ export default function EatNSplit() {
           />
           {selectedFriend &&
               <Form
+                  // key for resetting the state in the form
+                  // otherwise bill value will be the same for all friends
+                  // key tells the diffing operation that this should be the new form for each friend
+                  key={selectedFriend.id}
                   setFriends={setFriends}
                   selectedFriend={selectedFriend}
               />
