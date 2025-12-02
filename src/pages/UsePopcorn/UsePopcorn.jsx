@@ -3,11 +3,13 @@ import Header from "./components/layouts/Header.jsx";
 import MovieList from "./components/MovieList.jsx";
 import WatchedMovieSummary from "./components/WatchedMovieSummary.jsx";
 import Column from "./components/layouts/Column.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "./components/Search.jsx";
 import FoundResults from "./components/FoundResults.jsx";
 import Logo from "./components/Logo";
 import Main from "./components/layouts/Main.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import ErrorText from "./components/ErrorText.jsx";
 
 const tempMovieData = [
   {
@@ -56,10 +58,43 @@ const tempWatchedData = [
   },
 ];
 
+const KEY = import.meta.env.VITE_OMBD_API_KEY
+
 export default function UsePopcorn() {
   const [movies, setMovies] = useState(tempMovieData)
   const [watchedMovies, setWatchedMovies] = useState(tempWatchedData)
   const [searchQuery, setSearchQuery] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        setIsLoading(true)
+        setError('')
+        const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${searchQuery}`)
+        if (!res.ok) throw new Error("Something went wrong with fetching movies")
+
+        const data = await res.json()
+        if (data.Response === 'False') throw new Error("Movie not found")
+
+        setMovies(data.Search)
+        setIsLoading(false)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if(searchQuery.length < 3) {
+      setMovies([])
+      setError('')
+      return
+    }
+
+    fetchMovies()
+  }, [searchQuery])
 
   return (
       <div className={'usepopcorn-page'}>
@@ -73,7 +108,9 @@ export default function UsePopcorn() {
         </Header>
         <Main>
           <Column>
-            <MovieList movies={movies}/>
+            {isLoading && <Loader local={true}/>}
+            {!isLoading && !error && <MovieList movies={movies}/>}
+            {error && <ErrorText message={error}/>}
           </Column>
           <Column>
             <WatchedMovieSummary movies={watchedMovies}/>

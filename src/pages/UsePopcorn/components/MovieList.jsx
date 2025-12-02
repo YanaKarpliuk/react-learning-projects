@@ -8,10 +8,10 @@ export default function MovieList({movies, isWatched}) {
           {movies.map((item) => (
               <MovieItem
                   key={item.imdbID}
-                  title={item.title}
-                  year={item.year}
-                  poster={item.poster}
-                  runtime={item.runtime}
+                  title={item.Title}
+                  year={item.Year}
+                  poster={item.Poster}
+                  runtime={item.Runtime}
                   imdbRating={item.imdbRating}
                   useRating={item.userRating}
                   isWatched={isWatched}
