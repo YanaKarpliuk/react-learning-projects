@@ -15,7 +15,7 @@
   .usepopcorn-header {
     display: grid;
     align-items: center;
-    gap:12px;
+    gap: 12px;
     padding: 24px;
     background-color: var(--color-primary);
     border-radius: 14px;
@@ -107,6 +107,19 @@
     }
 
     // Movie item.
+    .movie-btn {
+      background: transparent;
+      border: 0;
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0;
+
+      &:hover, &:focus {
+        background: var(--color-background-100);
+      }
+    }
+
     .movie-item {
       display: flex;
       align-items: center;
@@ -210,6 +223,102 @@
 
         &:hover, &:focus {
           background: var(--color-primary-light);
+        }
+      }
+    }
+
+    // Details
+    .movie-details {
+      position: relative;
+
+      .close-details-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 0;
+        border-radius: 50%;
+        padding: 0 0 5px;
+        height: 32px;
+        width: 32px;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .movie-details-top {
+        display: flex;
+        flex-direction: column;
+        background: var(--color-background-100);
+
+        @media screen and (width >= 768px) {
+          flex-direction: row;
+        }
+
+        img {
+          height: auto;
+          width: 125px;
+          object-fit: contain;
+
+          @media screen and (width < 768px) {
+            margin: 0 auto;
+          }
+        }
+
+        .movie-details-info {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          padding: 24px;
+
+          @media screen and (width >= 768px) {
+            padding-inline: 16px;
+          }
+
+          h2 {
+            margin: 0;
+            font-size: 24px;
+          }
+
+          .info-item {
+            font-size: 16px;
+          }
+
+          .one-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+
+            .info-item {
+              position: relative;
+
+              &:not(:last-child) {
+                &::after {
+                  content: '';
+                  position: absolute;
+                  right: -15px;
+                  top: calc(50% - 2px);
+                  display: block;
+                  height: 3px;
+                  width: 3px;
+                  border-radius: 50%;
+                  background: white;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .movie-details-bottom {
+        padding: 24px;
+
+        .description {
+          margin-top: 24px;
         }
       }
     }

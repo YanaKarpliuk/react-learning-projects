@@ -9,9 +9,9 @@ export default function WatchedMovieSummary({movies}) {
         <h2>Movies you watched</h2>
         <div className='watched-data'>
           <span>🔃 {moviesTotal} movies</span>
-          <span>⭐ {avgImbdRating}</span>
-          <span>🌟 {avgUserRating}</span>
-          <span>⌛ {avgRuntime}</span>
+          <span>⭐ {avgImbdRating || 0}</span>
+          <span>🌟 {avgUserRating || 0}</span>
+          <span>⌛ {avgRuntime || 0}</span>
         </div>
       </div>
   )
