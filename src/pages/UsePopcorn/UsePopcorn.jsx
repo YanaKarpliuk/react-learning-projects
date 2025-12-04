@@ -112,13 +112,16 @@ export default function UsePopcorn() {
           <Column>
             {isLoading && <Loader local={true}/>}
             {!isLoading && !error &&
-                <MovieList movies={movies} selectedId={selectedId} setSelectedId={setSelectedId}
-                />}
+                <MovieList movies={movies} setSelectedId={setSelectedId}/>}
             {error && <ErrorText message={error}/>}
           </Column>
           <Column>
             {selectedId
-                ? <MovieDetails movies={movies} selectedId={selectedId} setSelectedId={setSelectedId}/>
+                ? <MovieDetails
+                    movieKey={KEY}
+                    selectedId={selectedId}
+                    setSelectedId={setSelectedId}
+                />
                 : <>
                   <WatchedMovieSummary movies={watchedMovies}/>
                   <MovieList movies={watchedMovies} isWatched={true}/>
