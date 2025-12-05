@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader/Loader.jsx";
 import ErrorText from "./ErrorText.jsx";
 
-export default function MovieDetails({selectedId, setSelectedId, movieKey}) {
+export default function MovieDetails({selectedId, setSelectedId, movieKey, addWatchedMovie, watchedMovies}) {
   const [selectedMovie, setSelectedMovie] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+  const [userRating, setUserRating] = useState(0)
+
+  const isMovieWatched = watchedMovies.find(movie => movie.imdbID === selectedId)
+  const watchedMovieRating = watchedMovies.find(movie => movie.imdbID === selectedId)?.userRating
 
   const {
     Title: title,
@@ -19,6 +23,21 @@ export default function MovieDetails({selectedId, setSelectedId, movieKey}) {
     Actors: actors,
     Director: director
   } = selectedMovie
+
+  function handleClick() {
+    const newMovie = {
+      imdbID: selectedId,
+      Title: title,
+      Year: selectedMovie.year,
+      Poster: poster,
+      Runtime: Number(runtime.split(' ')[0]),
+      imdbRating: Number(imdbRating),
+      userRating,
+    }
+
+    addWatchedMovie(newMovie)
+    setSelectedId(null)
+  }
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -67,7 +86,17 @@ export default function MovieDetails({selectedId, setSelectedId, movieKey}) {
                 </div>
               </div>
               <div className='movie-details-bottom'>
-                <StarRating/>
+                <div className='star-rating-wrapper'>
+                  {!isMovieWatched && <StarRating setUserRating={setUserRating}/>}
+                  {userRating > 0 && !isMovieWatched &&
+                      <button
+                          className='add-to-list-btn'
+                          aria-label='Add the movie to list'
+                          onClick={handleClick}
+                      >+ Add to list</button>
+                  }
+                  {isMovieWatched && <div>🌟 You rated this movie {watchedMovieRating}</div>}
+                </div>
                 <div className='description'>
                   <p>{plot}</p>
                   <p>Starring {actors}</p>

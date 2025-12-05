@@ -1,6 +1,7 @@
 import './usePopcorn.scss';
 import Header from "./components/layouts/Header.jsx";
 import MovieList from "./components/MovieList.jsx";
+import WatchedMovieList from "./components/WatchedMovieList.jsx";
 import WatchedMovieSummary from "./components/WatchedMovieSummary.jsx";
 import Column from "./components/layouts/Column.jsx";
 import { useEffect, useState } from "react";
@@ -69,6 +70,18 @@ export default function UsePopcorn() {
   const [error, setError] = useState('')
   const [selectedId, setSelectedId] = useState(null)
 
+  function selectMovie(id) {
+    setSelectedId(id)
+  }
+
+  function addWatchedMovie(movie) {
+    setWatchedMovies(prev => [...prev, movie])
+  }
+
+  function removeWatchedMovie(id) {
+    setWatchedMovies(prev => prev.filter(movie => movie.imdbID !== id))
+  }
+
   useEffect(() => {
     async function fetchMovies() {
       try {
@@ -112,7 +125,7 @@ export default function UsePopcorn() {
           <Column>
             {isLoading && <Loader local={true}/>}
             {!isLoading && !error &&
-                <MovieList movies={movies} setSelectedId={setSelectedId}/>}
+                <MovieList movies={movies} selectMovie={selectMovie}/>}
             {error && <ErrorText message={error}/>}
           </Column>
           <Column>
@@ -121,10 +134,12 @@ export default function UsePopcorn() {
                     movieKey={KEY}
                     selectedId={selectedId}
                     setSelectedId={setSelectedId}
+                    addWatchedMovie={addWatchedMovie}
+                    watchedMovies={watchedMovies}
                 />
                 : <>
                   <WatchedMovieSummary movies={watchedMovies}/>
-                  <MovieList movies={watchedMovies} isWatched={true}/>
+                  <WatchedMovieList movies={watchedMovies} removeWatchedMovie={removeWatchedMovie}/>
                 </>
             }
           </Column>
