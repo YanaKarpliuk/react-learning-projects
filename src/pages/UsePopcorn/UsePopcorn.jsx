@@ -111,6 +111,14 @@ export default function UsePopcorn() {
     fetchMovies()
   }, [searchQuery])
 
+  useEffect(() => {
+    document.title = 'usePopcorn'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
+
   return (
       <div className={'usepopcorn-page'}>
         <Header>
