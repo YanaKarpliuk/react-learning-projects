@@ -65,6 +65,7 @@ export default function UsePopcorn() {
       return
     }
 
+    if (selectedId) setSelectedId(null)
     fetchMovies()
 
     // Each time we type a letter, a request is sent to API

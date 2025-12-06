@@ -71,6 +71,20 @@ export default function MovieDetails({selectedId, setSelectedId, movieKey, addWa
     }
   }, [title])
 
+  useEffect(() => {
+    function callback (e) {
+      if (e.code === 'Escape') setSelectedId(null)
+    }
+
+    document.addEventListener('keydown', callback)
+
+    // Need to clean up the event because it gets accumulated on the document.
+    // The function should be exactly the same in the event listeners.
+    return function() {
+      document.removeEventListener('keydown', callback)
+    }
+  }, [])
+
   return (
       <div className='movie-details'>
         <button
