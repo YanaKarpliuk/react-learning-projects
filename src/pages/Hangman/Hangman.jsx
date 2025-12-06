@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './hangman.scss'
 import { languages } from "./languages.js";
 import { getFarewellText, getRandomWord } from "./utils.js";
@@ -30,6 +30,14 @@ export default function Hangman() {
     setCurrentWord(getRandomWord())
     setGuessedLetters([])
   }
+
+  useEffect(() => {
+    document.title = 'Hangman'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
 
   return (
       <main className='hangman'>

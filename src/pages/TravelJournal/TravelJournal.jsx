@@ -2,8 +2,17 @@ import data from './data.js';
 import globeLogo from './assets/Globe.svg';
 import pinIcon from './assets/pin.svg';
 import './travelJournal.scss';
+import { useEffect } from "react";
 
 function Entry({img, title, country, googleMapsLink, dates, text}) {
+  useEffect(() => {
+    document.title = 'My Travel Journal'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
+
   return (
       <article className="journal-entry">
         <div className="main-image-container">

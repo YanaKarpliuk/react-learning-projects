@@ -53,6 +53,14 @@ export default function EatNSplit() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [friends.length])
 
+  useEffect(() => {
+    document.title = 'Eat-\'N-Split'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
+
   return (
       <div className={'eat-split-page'}>
         <main>

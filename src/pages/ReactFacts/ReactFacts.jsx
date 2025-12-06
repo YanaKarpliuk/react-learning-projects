@@ -1,7 +1,16 @@
 import reactLogo from './assets/react.svg';
 import './reactFacts.scss';
+import { useEffect } from "react";
 
 export default function ReactFacts() {
+  useEffect(() => {
+    document.title = 'React Facts'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
+
   return (
       <div className={'react-page'}>
         <header className={'react-header'}>

@@ -4,7 +4,7 @@ import Form from "./components/Form.jsx";
 import List from "./components/List";
 import ListActions from "./components/ListActions";
 import Footer from "./components/Footer.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 
 export default function TravelList() {
@@ -74,6 +74,14 @@ export default function TravelList() {
         return travelItems
     }
   });
+
+  useEffect(() => {
+    document.title = 'Travel List'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
 
   return (
       <div className={'travel-list-page'}>

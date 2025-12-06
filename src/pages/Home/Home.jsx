@@ -1,7 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import './home.scss';
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = 'My React Journey'
+  }, [])
+
   return (
       <header className={'header container'}>
         <nav>

@@ -19,6 +19,14 @@ export default function Tenzies() {
     }
   }, [gameWon])
 
+  useEffect(() => {
+    document.title = 'Tenzies'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
+
   function generateAllNewDice() {
     let newDice = []
     for (let i = 0; i < 10; i += 1) {

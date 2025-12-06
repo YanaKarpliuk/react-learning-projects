@@ -33,6 +33,14 @@ export default function MemoryGame() {
     }
   }, [matchedCards])
 
+  useEffect(() => {
+    document.title = 'Memory Game'
+
+    return function () {
+      document.title = 'My React Journey'
+    }
+  }, [])
+
   function handleFormChange(event) {
     setFormData(prev => {
       return {
