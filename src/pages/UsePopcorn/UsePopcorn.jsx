@@ -14,10 +14,11 @@ import ErrorText from "./components/ErrorText.jsx";
 import MovieDetails from "./components/MovieDetails";
 
 const KEY = import.meta.env.VITE_OMBD_API_KEY
+const initialWatchedMovies = JSON.parse(localStorage.getItem("watchedMovies")) || [];
 
 export default function UsePopcorn() {
   const [movies, setMovies] = useState([])
-  const [watchedMovies, setWatchedMovies] = useState([])
+  const [watchedMovies, setWatchedMovies] = useState(initialWatchedMovies)
   const [searchQuery, setSearchQuery] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
@@ -82,6 +83,10 @@ export default function UsePopcorn() {
       document.title = 'My React Journey'
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("watchedMovies", JSON.stringify(watchedMovies));
+  }, [watchedMovies]);
 
   return (
       <div className={'usepopcorn-page'}>
