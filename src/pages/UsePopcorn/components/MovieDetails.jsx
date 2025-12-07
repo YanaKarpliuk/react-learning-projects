@@ -2,8 +2,9 @@ import StarRating from "./StarRating";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader/Loader.jsx";
 import ErrorText from "./ErrorText.jsx";
+import { useKey } from "../hooks/useKey.js";
 
-export default function MovieDetails({selectedId, setSelectedId, movieKey, addWatchedMovie, watchedMovies}) {
+export default function MovieDetails({selectedId, movieKey, addWatchedMovie, watchedMovies, deselectMovie}) {
   const [selectedMovie, setSelectedMovie] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
@@ -36,7 +37,7 @@ export default function MovieDetails({selectedId, setSelectedId, movieKey, addWa
     }
 
     addWatchedMovie(newMovie)
-    setSelectedId(null)
+    deselectMovie()
   }
 
   useEffect(() => {
@@ -71,26 +72,14 @@ export default function MovieDetails({selectedId, setSelectedId, movieKey, addWa
     }
   }, [title])
 
-  useEffect(() => {
-    function callback (e) {
-      if (e.code === 'Escape') setSelectedId(null)
-    }
-
-    document.addEventListener('keydown', callback)
-
-    // Need to clean up the event because it gets accumulated on the document.
-    // The function should be exactly the same in the event listeners.
-    return function() {
-      document.removeEventListener('keydown', callback)
-    }
-  }, [])
+  useKey('Escape', deselectMovie)
 
   return (
       <div className='movie-details'>
         <button
             className='close-details-btn'
             aria-label='Close the movie details'
-            onClick={() => setSelectedId(null)}
+            onClick={() => deselectMovie()}
         >&larr;
         </button>
         {isLoading && <Loader local={true}/>}

@@ -1,21 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useKey } from "../hooks/useKey.js";
 
 export default function Search({setSearchQuery, searchQuery}) {
   const searchRef = useRef(null)
 
-  useEffect(() => {
+  useKey('Enter', handleFocus)
+
+  function handleFocus() {
     searchRef.current.focus()
-
-    function callback (e) {
-      if (e.code === 'Enter') searchRef.current.focus()
-    }
-
-    document.addEventListener('keydown', callback)
-
-    return function() {
-      document.removeEventListener('keydown', callback)
-    }
-  }, [])
+  }
 
   return (
       <div className='search-wrapper'>
