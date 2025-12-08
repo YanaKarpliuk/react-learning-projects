@@ -44,6 +44,9 @@ export default function Home() {
             <li>
               <NavLink to="/usepopcorn" end>usePopcorn</NavLink>
             </li>
+            <li>
+              <NavLink to="/react-quiz" end>React Quiz</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

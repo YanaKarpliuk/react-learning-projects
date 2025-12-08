@@ -11,6 +11,7 @@ const MemoryGame = lazy(() => import('./Pages/MemoryGame/MemoryGame.jsx'));
 const PizzaMenu = lazy(() => import('./Pages/PizzaMenu/PizzaMenu.jsx'));
 const EatNSplit = lazy(() => import('./Pages/EatNSplit/EatNSplit.jsx'));
 const UsePopcorn = lazy(() => import('./Pages/UsePopcorn/UsePopcorn.jsx'));
+const ReactQuiz = lazy(() => import('./Pages/ReactQuiz/ReactQuiz.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import TravelList from "./pages/TravelList/TravelList";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="travel-list" element={<TravelList />} />
           <Route path="eat-n-split" element={<EatNSplit />} />
           <Route path="usepopcorn" element={<UsePopcorn />} />
+          <Route path="react-quiz" element={<ReactQuiz />} />
         </Route>
         <Route path="/">
           <Route index element={<Home />} />
