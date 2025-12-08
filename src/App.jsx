@@ -12,6 +12,7 @@ const PizzaMenu = lazy(() => import('./Pages/PizzaMenu/PizzaMenu.jsx'));
 const EatNSplit = lazy(() => import('./Pages/EatNSplit/EatNSplit.jsx'));
 const UsePopcorn = lazy(() => import('./Pages/UsePopcorn/UsePopcorn.jsx'));
 const ReactQuiz = lazy(() => import('./Pages/ReactQuiz/ReactQuiz.jsx'));
+const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import TravelList from "./pages/TravelList/TravelList";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="travel-list" element={<TravelList />} />
           <Route path="eat-n-split" element={<EatNSplit />} />
           <Route path="usepopcorn" element={<UsePopcorn />} />
+          <Route path="date-counter" element={<DateCounter />} />
           <Route path="react-quiz" element={<ReactQuiz />} />
         </Route>
         <Route path="/">

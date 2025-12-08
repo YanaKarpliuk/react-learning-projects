@@ -45,6 +45,9 @@ export default function Home() {
               <NavLink to="/usepopcorn" end>usePopcorn</NavLink>
             </li>
             <li>
+              <NavLink to="/date-counter" end>Date Counter (useReducer practice)</NavLink>
+            </li>
+            <li>
               <NavLink to="/react-quiz" end>React Quiz</NavLink>
             </li>
           </ul>
