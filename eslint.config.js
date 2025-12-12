@@ -30,6 +30,7 @@ export default defineConfig([
       'no-new': 0,
       'consistent-return': 0,
       'no-param-reassign': 0,
+      'no-case-declarations': 0,
     },
   },
 ])

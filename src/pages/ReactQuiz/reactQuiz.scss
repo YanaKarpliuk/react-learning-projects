@@ -1,196 +1,180 @@
 // stylelint-disable import-notation
-@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&display=swap');
 
-.travel-list-page {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  color: #5a3e2b;
-  font-family: Quicksand, sans-serif;
-  font-weight: 500;
-  height: calc(100vh - 104px);
+.react-quiz-page {
+  --color-darkest: #343a40;
+  --color-dark: #495057;
+  --color-medium: #ced4da;
+  --color-light: #f1f3f5;
+  --color-theme: #1098ad;
+  --color-accent: #ffa94d;
 
-  @media (width >= 768px) {
-    font-size: 18px;
-  }
-
-  // General.
-  button,
-  select,
-  input {
-    background-color: #ffebb3;
-    color: #5a3e2b;
-    font-family: inherit;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 24px;
-    font-weight: 700;
+  .btn-primary {
+    display: block;
+    border: 1px solid var(--color-dark);
+    padding: 14px 24px;
+    width: fit-content;
+    background: var(--color-dark);
+    border-radius: 24px;
     font-size: 16px;
-    cursor: pointer;
-  }
+    transition: 250ms;
 
-  .travel-list-header,
-  .travel-list-form,
-  .travel-list-footer {
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      z-index: -1;
-      transform: translateX(-50%);
-      height: 100%;
-      width: 100vw;
+    &:hover, &:focus {
+      background: var(--color-darkest);
     }
   }
 
+  // Header
+  .quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
 
-  // Header.
-  .travel-list-header {
-    padding: 30px 0;
-
-    &::after {
-      background-color: #f4a226;
+    img {
+      width: 80px;
     }
 
     h1 {
-      text-align: center;
-      font-family: Monoton, sans-serif;
-      font-size: 30px;
-      line-height: 1.1;
-      text-transform: uppercase;
-      font-weight: 400;
-      word-spacing: 30px;
-      letter-spacing: -5px;
-      margin: 0;
-
-      @media (width >= 768px) {
-        font-size: 50px;
-      }
+      font-family: Codystar, sans-serif;
+      font-size: 40px;
     }
   }
 
-  // Main.
-  .travel-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100% - 202px);
+  // Main
+  main {
+    padding: 48px 0;
+    max-width: 500px;
+    margin: 0 auto;
 
-    // Form.
-    .travel-list-form {
-      padding: 30px 0;
+    .quiz-bottom {
+      margin-top: 24px;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+    }
+  }
+
+  // Start screen
+  .start-screen {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 32px;
+    }
+
+    p {
+      margin: 0 0 24px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    button {
+      justify-self: center;
+    }
+  }
+
+  // Question
+  .question-wrapper {
+    h3 {
+      margin: 0 0 24px;
+      font-size: 24px;
+    }
+
+    .options-wrapper {
       display: flex;
       flex-direction: column;
       gap: 10px;
 
-      @media (width >= 768px) {
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-      }
+      .btn-primary {
+        width: 100%;
+        text-align: start;
 
-      &::after {
-        background-color: #e5771f;
-      }
-
-      .text {
-        font-weight: 700;
-      }
-
-      .form-input-number {
-        input {
-          width: 50px;
+        &:hover, &:focus, &.answer {
+          transform: translateX(15px);
         }
-      }
 
-      .form-actions {
-        input {
-          text-transform: uppercase;
-          background-color: #76c7ad;
+        &[disabled] {
+          pointer-events: none;
+        }
+
+        &.correct {
+          background: var(--color-theme);
+          color: white;
+        }
+
+        &.wrong {
+          background: var(--color-accent);
+          color: var(--color-darkest);
         }
       }
     }
+  }
 
-    // Travel list.
-    .travel-list-items {
-      color: #ffebb3;
-      padding: 30px 0;
-      overflow-y: auto;
+  // Next
+  .btn-next {
+    margin-left: auto;
+  }
 
-      ul {
-        margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 20px;
+  // Progress
+  .progress-bar-wrapper {
+    margin-bottom: 32px;
 
-        .travel-list-item {
-          display: flex;
-          align-items: center;
-          gap: 15px;
+    .progress-bar {
+      display: block;
+      width: 100%;
+      height: 10px;
+      background: var(--color-medium);
+      border-radius: 10px;
 
-          .travel-list-item-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+      &[value]::-webkit-progress-bar {
+        background: var(--color-medium);
+        border-radius: 10px;
+      }
 
-            input[type="checkbox"] {
-              height: 20px;
-              width: 20px;
-              accent-color: #e5771f;
-
-              &.checked + label {
-                text-decoration: line-through;
-              }
-            }
-          }
-
-          button {
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0.8rem;
-          }
-        }
+      &[value]::-webkit-progress-value {
+        background: var(--color-theme);
+        border-radius: 10px;
       }
     }
 
-    // Actions.
-    .travel-list-actions {
+    .data-wrapper {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 16px 0;
-      margin-top: auto;
-
-      // stylelint-disable no-descending-specificity
-      button,
-      select {
-        text-transform: uppercase;
-        padding: 12px 24px;
-        font-size: 16px;
-        font-weight: 700;
-      }
+      justify-content: space-between;
+      font-size: 14px;
+      margin-top: 8px;
     }
   }
 
-  // Footer.
-  .travel-list-footer {
+  // Results.
+  .results-wrapper {
     text-align: center;
-    font-weight: 700;
-    padding: 30px 0;
 
-    &::after {
-      background-color: #76c7ad;
+    .results {
+      background: var(--color-theme);
+      border-radius: 40px;
+      color: white;
+      font-size: 18px;
+      padding: 14px;
+    }
+
+    button {
+      margin-top: 32px;
+      margin-left: auto;
     }
   }
-}
 
-body:has(.travel-list-page) {
-  max-height: 100vh;
+  // Timer
+  .timer {
+    border: 1px solid var(--color-dark);
+    padding: 14px 24px;
+    border-radius: 24px;
+    font-size: 16px;
+    line-height: 1.15;
+    width: 100px;
+    text-align: center;
+  }
 }
