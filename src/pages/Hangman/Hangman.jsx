@@ -33,10 +33,6 @@ export default function Hangman() {
 
   useEffect(() => {
     document.title = 'Hangman'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

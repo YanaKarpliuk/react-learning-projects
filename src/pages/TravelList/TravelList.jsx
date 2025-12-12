@@ -77,10 +77,6 @@ export default function TravelList() {
 
   useEffect(() => {
     document.title = 'Travel List'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

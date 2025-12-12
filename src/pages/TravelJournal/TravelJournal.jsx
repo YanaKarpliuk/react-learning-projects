@@ -7,10 +7,6 @@ import { useEffect } from "react";
 function Entry({img, title, country, googleMapsLink, dates, text}) {
   useEffect(() => {
     document.title = 'My Travel Journal'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

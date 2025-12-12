@@ -7,10 +7,6 @@ import { useEffect } from "react";
 export default function PizzaMenu() {
   useEffect(() => {
     document.title = 'Pizza Menu'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

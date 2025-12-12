@@ -35,10 +35,6 @@ export default function MemoryGame() {
 
   useEffect(() => {
     document.title = 'Memory Game'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   function handleFormChange(event) {

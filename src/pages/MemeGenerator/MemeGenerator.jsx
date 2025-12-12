@@ -6,10 +6,6 @@ import { useEffect } from "react";
 export default function MemeGenerator() {
   useEffect(() => {
     document.title = 'Meme Generator'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

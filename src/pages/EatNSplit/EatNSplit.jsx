@@ -55,10 +55,6 @@ export default function EatNSplit() {
 
   useEffect(() => {
     document.title = 'Eat-\'N-Split'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

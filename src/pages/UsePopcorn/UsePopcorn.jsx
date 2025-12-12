@@ -42,10 +42,6 @@ export default function UsePopcorn() {
 
   useEffect(() => {
     document.title = 'usePopcorn'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   return (

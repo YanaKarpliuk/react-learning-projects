@@ -21,10 +21,6 @@ export default function Tenzies() {
 
   useEffect(() => {
     document.title = 'Tenzies'
-
-    return function () {
-      document.title = 'My React Journey'
-    }
   }, [])
 
   function generateAllNewDice() {
