@@ -1,8 +1,7 @@
-import PostContext from "../PostContext.jsx";
-import { useContext } from "react";
+import { usePosts } from "../PostContext.jsx";
 
 export default function List() {
-  const {posts} = useContext(PostContext)
+  const {posts} = usePosts()
 
   return (
       <ul className='list'>

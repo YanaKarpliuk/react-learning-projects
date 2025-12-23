@@ -1,8 +1,7 @@
-import PostContext from "../PostContext.jsx";
-import { useContext } from "react";
+import { usePosts } from "../PostContext.jsx";
 
 export default function Search() {
-  const {searchQuery, setSearchQuery} = useContext(PostContext)
+  const {searchQuery, setSearchQuery} = usePosts()
 
   return (
       <div className='search-wrapper'>

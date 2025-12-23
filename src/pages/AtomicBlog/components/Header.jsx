@@ -1,10 +1,9 @@
 import Results from "./Results.jsx";
 import Search from "./Search.jsx";
-import PostContext from "../PostContext.jsx";
-import { useContext } from "react";
+import { usePosts } from "../PostContext.jsx";
 
 export default function Header() {
-  const {onClearPosts} = useContext(PostContext)
+  const {onClearPosts} = usePosts()
 
   return (
       <header className='header'>
