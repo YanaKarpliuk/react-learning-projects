@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Main from "./components/Main.jsx";
 import Archive from "./components/Archive.jsx";
 import Footer from "./components/Footer.jsx";
+import PostContext from "./PostContext.jsx";
 
 function createRandomPost() {
   return {
@@ -43,22 +44,27 @@ export default function AtomicBlog() {
   }, [])
 
   return (
-      <div className={`atomic-blog-page ${isFakeDark ? 'fake-dark-mode' : ''}`}>
-        <button
-            onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-            className="btn-fake-dark-mode"
-        >
-          {isFakeDark ? "☀️" : "🌙"}
-        </button>
-        <Header
-            posts={searchedPosts}
-            onClearPosts={handleClearPosts}
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-        />
-        <Main posts={searchedPosts} onAddPost={handleAddPost} />
-        <Archive onAddPost={handleAddPost} createRandomPost={createRandomPost} />
-        <Footer />
-      </div>
+      <PostContext.Provider
+          value={{
+            posts: searchedPosts,
+            onAddPost: handleAddPost,
+            onClearPosts: handleClearPosts,
+            searchQuery,
+            setSearchQuery
+          }}
+      >
+        <div className={`atomic-blog-page ${isFakeDark ? 'fake-dark-mode' : ''}`}>
+          <button
+              onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
+              className="btn-fake-dark-mode"
+          >
+            {isFakeDark ? "☀️" : "🌙"}
+          </button>
+          <Header />
+          <Main />
+          <Archive createRandomPost={createRandomPost}/>
+          <Footer/>
+        </div>
+      </PostContext.Provider>
   )
 }

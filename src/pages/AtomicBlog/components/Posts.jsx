@@ -1,9 +1,9 @@
 import List from "./List.jsx";
 
-export default function Posts({posts}) {
+export default function Posts() {
   return (
       <section>
-        <List posts={posts} />
+        <List />
       </section>
   )
 }
