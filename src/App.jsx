@@ -15,6 +15,7 @@ const ReactQuiz = lazy(() => import('./Pages/ReactQuiz/ReactQuiz.jsx'));
 const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import TravelList from "./pages/TravelList/TravelList";
+import AtomicBlog from "./pages/AtomicBlog/AtomicBlog";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="usepopcorn" element={<UsePopcorn />} />
           <Route path="date-counter" element={<DateCounter />} />
           <Route path="react-quiz" element={<ReactQuiz />} />
+          <Route path="atomic-blog" element={<AtomicBlog />} />
         </Route>
         <Route path="/">
           <Route index element={<Home />} />
