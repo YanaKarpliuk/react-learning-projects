@@ -1,17 +1,21 @@
-export default function ProgressBar({currentQuestion, totalQuestions, currentPoints, totalPoints, answer}) {
+import { useQuiz } from "../contexts/QuizContext.jsx";
+
+export default function ProgressBar() {
+  const { questionsNum, index, points, totalPoints, answer } = useQuiz()
+
   return (
       <div className='progress-bar-wrapper'>
         <progress
             className={'progress-bar'}
-            max={totalQuestions}
-            value={currentQuestion + Number(answer !== null)}
+            max={questionsNum}
+            value={index + Number(answer !== null)}
         />
         <div className='data-wrapper'>
           <div className='data'>
-            Question <strong>{currentQuestion + 1}</strong> / {totalQuestions}
+            Question <strong>{index + 1}</strong> / {questionsNum}
           </div>
           <div className='data'>
-            <strong>{currentPoints}</strong> / {totalPoints} points
+            <strong>{points}</strong> / {totalPoints} points
           </div>
         </div>
       </div>

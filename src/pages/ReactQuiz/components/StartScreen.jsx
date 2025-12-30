@@ -1,9 +1,13 @@
-export default function StartScreen({quantity, dispatch}) {
+import { useQuiz } from "../contexts/QuizContext.jsx";
+
+export default function StartScreen() {
+  const { questionsNum, dispatch } = useQuiz()
+
   return (
       <div className='start-screen'>
         <h2>Welcome to The React Quiz</h2>
         <p>
-          {quantity} questions to start your React mastery
+          {questionsNum} questions to start your React mastery
         </p>
         <button
             className='btn-primary'

@@ -31,6 +31,7 @@ export default defineConfig([
       'consistent-return': 0,
       'no-param-reassign': 0,
       'no-case-declarations': 0,
+      'react-refresh/only-export-components': 0
     },
   },
 ])

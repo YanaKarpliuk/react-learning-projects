@@ -1,20 +1,24 @@
-export default function Options({question, dispatch, answer}) {
+import { useQuiz } from "../contexts/QuizContext.jsx";
+
+export default function Options({ question }) {
+  const { dispatch, answer } = useQuiz()
+
   const hasAnswered = answer !== null
 
   return (
       <div className='options-wrapper'>
-        {question.options.map((option, index) => (
+        {question.options.map((option, i) => (
             <button
-                className={`btn-primary ${index === answer ? 'answer' : ''} ${
+                className={`btn-primary ${i === answer ? 'answer' : ''} ${
                     hasAnswered ? (
-                            index === question.correctOption
-                                ? 'correct'
-                                : 'wrong'
-                        ) : ''
+                        i === question.correctOption
+                            ? 'correct'
+                            : 'wrong'
+                    ) : ''
                 }`}
                 key={option}
                 disabled={hasAnswered}
-                onClick={() => dispatch({type: "newAnswer", payload: index})}
+                onClick={() => dispatch({ type: "newAnswer", payload: i })}
             >
               {option}
             </button>

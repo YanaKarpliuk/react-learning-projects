@@ -16,28 +16,32 @@ const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import TravelList from "./pages/TravelList/TravelList";
 import AtomicBlog from "./pages/AtomicBlog/AtomicBlog";
+import { QuizProvider } from "./pages/ReactQuiz/contexts/QuizContext";
 
 function App() {
   return (
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="react-facts" element={<ReactFacts />} />
-          <Route path="travel-journal" element={<TravelJournal />} />
-          <Route path="chef-claude" element={<ChefClaude />} />
-          <Route path="meme-generator" element={<MemeGenerator />} />
-          <Route path="tenzies" element={<Tenzies />} />
-          <Route path="hangman" element={<Hangman />} />
-          <Route path="memory-game" element={<MemoryGame />} />
-          <Route path="pizza-menu" element={<PizzaMenu />} />
-          <Route path="travel-list" element={<TravelList />} />
-          <Route path="eat-n-split" element={<EatNSplit />} />
-          <Route path="usepopcorn" element={<UsePopcorn />} />
-          <Route path="date-counter" element={<DateCounter />} />
-          <Route path="react-quiz" element={<ReactQuiz />} />
-          <Route path="atomic-blog" element={<AtomicBlog />} />
+        <Route path="/" element={<SharedLayout/>}>
+          <Route path="react-facts" element={<ReactFacts/>}/>
+          <Route path="travel-journal" element={<TravelJournal/>}/>
+          <Route path="chef-claude" element={<ChefClaude/>}/>
+          <Route path="meme-generator" element={<MemeGenerator/>}/>
+          <Route path="tenzies" element={<Tenzies/>}/>
+          <Route path="hangman" element={<Hangman/>}/>
+          <Route path="memory-game" element={<MemoryGame/>}/>
+          <Route path="pizza-menu" element={<PizzaMenu/>}/>
+          <Route path="travel-list" element={<TravelList/>}/>
+          <Route path="eat-n-split" element={<EatNSplit/>}/>
+          <Route path="usepopcorn" element={<UsePopcorn/>}/>
+          <Route path="date-counter" element={<DateCounter/>}/>
+          <Route path="react-quiz" element={
+            <QuizProvider>
+              <ReactQuiz/>
+            </QuizProvider>}/>
+          <Route path="atomic-blog" element={<AtomicBlog/>}/>
         </Route>
         <Route path="/">
-          <Route index element={<Home />} />
+          <Route index element={<Home/>}/>
         </Route>
       </Routes>
   )
