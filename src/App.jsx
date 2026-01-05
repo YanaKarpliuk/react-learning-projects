@@ -14,7 +14,6 @@ const UsePopcorn = lazy(() => import('./Pages/UsePopcorn/UsePopcorn.jsx'));
 const ReactQuiz = lazy(() => import('./Pages/ReactQuiz/ReactQuiz.jsx'));
 const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
 const TravelList = lazy(() => import('./Pages/TravelList/TravelList.jsx'));
-const AtomicBlog = lazy(() => import('./Pages/AtomicBlog/AtomicBlog.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import { QuizProvider } from "./pages/ReactQuiz/contexts/QuizContext";
 
@@ -38,7 +37,6 @@ function App() {
             <QuizProvider>
               <ReactQuiz/>
             </QuizProvider>}/>
-          <Route path="atomic-blog" element={<AtomicBlog/>}/>
         </Route>
         <Route path="/">
           <Route index element={<Home/>}/>

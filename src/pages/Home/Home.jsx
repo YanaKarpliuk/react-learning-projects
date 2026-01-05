@@ -50,9 +50,6 @@ export default function Home() {
             <li>
               <NavLink to="/react-quiz" end>React Quiz</NavLink>
             </li>
-            <li>
-              <NavLink to="/atomic-blog" end>The Atomic Blog</NavLink>
-            </li>
           </ul>
         </nav>
       </header>
