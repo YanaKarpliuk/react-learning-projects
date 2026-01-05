@@ -13,9 +13,9 @@ const EatNSplit = lazy(() => import('./Pages/EatNSplit/EatNSplit.jsx'));
 const UsePopcorn = lazy(() => import('./Pages/UsePopcorn/UsePopcorn.jsx'));
 const ReactQuiz = lazy(() => import('./Pages/ReactQuiz/ReactQuiz.jsx'));
 const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
+const TravelList = lazy(() => import('./Pages/TravelList/TravelList.jsx'));
+const AtomicBlog = lazy(() => import('./Pages/AtomicBlog/AtomicBlog.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
-import TravelList from "./pages/TravelList/TravelList";
-import AtomicBlog from "./pages/AtomicBlog/AtomicBlog";
 import { QuizProvider } from "./pages/ReactQuiz/contexts/QuizContext";
 
 function App() {
