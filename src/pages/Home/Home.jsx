@@ -50,6 +50,9 @@ export default function Home() {
             <li>
               <NavLink to="/react-quiz" end>React Quiz</NavLink>
             </li>
+            <li>
+              <NavLink to="/workout-timer" end>Workout Timer</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

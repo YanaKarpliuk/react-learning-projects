@@ -14,6 +14,7 @@ const UsePopcorn = lazy(() => import('./Pages/UsePopcorn/UsePopcorn.jsx'));
 const ReactQuiz = lazy(() => import('./Pages/ReactQuiz/ReactQuiz.jsx'));
 const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
 const TravelList = lazy(() => import('./Pages/TravelList/TravelList.jsx'));
+const WorkoutTimer = lazy(() => import('./Pages/WorkoutTimer/WorkoutTimer.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import { QuizProvider } from "./pages/ReactQuiz/contexts/QuizContext";
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="eat-n-split" element={<EatNSplit/>}/>
           <Route path="usepopcorn" element={<UsePopcorn/>}/>
           <Route path="date-counter" element={<DateCounter/>}/>
+          <Route path="workout-timer" element={<WorkoutTimer/>}/>
           <Route path="react-quiz" element={
             <QuizProvider>
               <ReactQuiz/>
