@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState, memo, useEffect } from 'react';
 import clickSound from '../assets/ClickSound.m4a';
 
 // Memo won't work here because 'workouts' is an array.
@@ -8,16 +8,31 @@ export default memo(function Calculator({ workouts, allowSound }) {
   const [sets, setSets] = useState(3);
   const [speed, setSpeed] = useState(90);
   const [durationBreak, setDurationBreak] = useState(5);
+  const [duration, setDuration] = useState(0);
 
-  const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
   const mins = Math.floor(duration);
   const seconds = (duration - mins) * 60;
 
-  const playSound = function () {
-    if (!allowSound) return;
-    const sound = new Audio(clickSound);
-    sound.play();
-  };
+  function handleInc() {
+    setDuration(prev => Math.floor(prev) + 1)
+  }
+
+  function handleDec() {
+    setDuration(prev => prev > 1 ? Math.ceil(prev) - 1 : 0)
+  }
+
+  useEffect(() => {
+    setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak)
+  }, [number, sets, speed, durationBreak])
+
+  useEffect(() => {
+    function playSound() {
+      if (!allowSound) return;
+      const sound = new Audio(clickSound);
+      sound.play();
+    }
+    playSound()
+  }, [duration, allowSound])
 
   return (
       <>
@@ -67,15 +82,14 @@ export default memo(function Calculator({ workouts, allowSound }) {
                 value={durationBreak}
                 onChange={(e) => setDurationBreak(e.target.value)}
             />
-            <span>{durationBreak} minutes/break</span>
+            <span>{durationBreak} {durationBreak === '1' ? 'minute' : 'minutes'}/break</span>
           </div>
         </form>
         <section>
           <button
               aria-label='Decrease time'
               className='decrease'
-              onClick={() => {
-              }}
+              onClick={handleDec}
           >–
           </button>
           <p>
@@ -86,8 +100,7 @@ export default memo(function Calculator({ workouts, allowSound }) {
           <button
               aria-label='Increase time'
               className='increase'
-              onClick={() => {
-              }}
+              onClick={handleInc}
           >+
           </button>
         </section>
