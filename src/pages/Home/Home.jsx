@@ -53,6 +53,9 @@ export default function Home() {
             <li>
               <NavLink to="/workout-timer" end>Workout Timer</NavLink>
             </li>
+            <li>
+              <NavLink to="/redux-intro" end>Redux Intro</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
