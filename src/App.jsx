@@ -1,5 +1,7 @@
 import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom';
+import { Provider } from "react-redux";
+import store from "./pages/ReduxIntro/store.js";
 const ReactFacts = lazy(() => import('./Pages/ReactFacts/ReactFacts.jsx'));
 const TravelJournal = lazy(() => import('./Pages/TravelJournal/TravelJournal.jsx'));
 const ChefClaude = lazy(() => import('./Pages/ChefClaude/ChefClaude.jsx'));
@@ -36,7 +38,10 @@ function App() {
           <Route path="usepopcorn" element={<UsePopcorn/>}/>
           <Route path="date-counter" element={<DateCounter/>}/>
           <Route path="workout-timer" element={<WorkoutTimer/>}/>
-          <Route path="redux-intro" element={<ReduxIntro/>}/>
+          <Route path="redux-intro" element={
+            <Provider store={store}>
+              <ReduxIntro/>
+            </Provider>}/>
           <Route path="react-quiz" element={
             <QuizProvider>
               <ReactQuiz/>
