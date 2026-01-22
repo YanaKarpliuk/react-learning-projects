@@ -1,8 +1,27 @@
-import { NavLink } from 'react-router-dom';
 import './home.scss';
 import { useEffect } from "react";
+import NavItem from "./components/NavItem";
 
 export default function Home() {
+  const navItems = [
+    { link: 'react-facts', name: 'React Facts' },
+    { link: 'travel-journal', name: 'Travel Journal' },
+    { link: 'chef-claude', name: 'Chef Claude' },
+    { link: 'meme-generator', name: 'Meme Generator' },
+    { link: 'tenzies', name: 'Tenzies' },
+    { link: 'hangman', name: 'Hangman' },
+    { link: 'memory-game', name: 'Memory Game' },
+    { link: 'pizza-menu', name: 'Pizza Menu' },
+    { link: 'travel-list', name: 'Travel List' },
+    { link: 'eat-n-split', name: "Eat-'N-Split" },
+    { link: 'usepopcorn', name: 'usePopcorn' },
+    { link: 'date-counter', name: 'Date Counter (useReducer practice)' },
+    { link: 'react-quiz', name: 'React Quiz' },
+    { link: 'workout-timer', name: 'Workout Timer' },
+    { link: 'redux-intro', name: 'Redux Intro' },
+    { link: 'redux-toolkit-intro', name: 'Redux Toolkit Intro' },
+  ]
+
   useEffect(() => {
     document.title = 'My React Journey'
   }, [])
@@ -11,54 +30,9 @@ export default function Home() {
       <header className={'header container'}>
         <nav>
           <ul>
-            <li>
-              <NavLink to="/react-facts" end>React Facts</NavLink>
-            </li>
-            <li>
-              <NavLink to="/travel-journal" end>Travel Journal</NavLink>
-            </li>
-            <li>
-              <NavLink to="/chef-claude" end>Chef Claude</NavLink>
-            </li>
-            <li>
-              <NavLink to="/meme-generator" end>Meme Generator</NavLink>
-            </li>
-            <li>
-              <NavLink to="/tenzies" end>Tenzies</NavLink>
-            </li>
-            <li>
-              <NavLink to="/hangman" end>Hangman</NavLink>
-            </li>
-            <li>
-              <NavLink to="/memory-game" end>Memory Game</NavLink>
-            </li>
-            <li>
-              <NavLink to="/pizza-menu" end>Pizza Menu</NavLink>
-            </li>
-            <li>
-              <NavLink to="/travel-list" end>Travel List</NavLink>
-            </li>
-            <li>
-              <NavLink to="/eat-n-split" end>Eat-'N-Split</NavLink>
-            </li>
-            <li>
-              <NavLink to="/usepopcorn" end>usePopcorn</NavLink>
-            </li>
-            <li>
-              <NavLink to="/date-counter" end>Date Counter (useReducer practice)</NavLink>
-            </li>
-            <li>
-              <NavLink to="/react-quiz" end>React Quiz</NavLink>
-            </li>
-            <li>
-              <NavLink to="/workout-timer" end>Workout Timer</NavLink>
-            </li>
-            <li>
-              <NavLink to="/redux-intro" end>Redux Intro</NavLink>
-            </li>
-            <li>
-              <NavLink to="/redux-toolkit-intro" end>Redux Toolkit Intro</NavLink>
-            </li>
+            {navItems.map(({ link, name }) => (
+                <NavItem key={link} link={link} name={name}/>
+            ))}
           </ul>
         </nav>
       </header>
