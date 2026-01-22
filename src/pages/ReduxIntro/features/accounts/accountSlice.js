@@ -1,7 +1,8 @@
 const initialStateAccount = {
   balance: 0,
   loan: 0,
-  loanPurpose: ""
+  loanPurpose: "",
+  isLoading: false
 }
 
 export default function accountReducer(state = initialStateAccount, action) {
@@ -9,7 +10,8 @@ export default function accountReducer(state = initialStateAccount, action) {
     case "account/deposit":
       return {
         ...state,
-        balance: state.balance + action.payload
+        balance: state.balance + action.payload,
+        isLoading: false
       }
     case "account/withdraw":
       return {
@@ -31,6 +33,11 @@ export default function accountReducer(state = initialStateAccount, action) {
         loanPurpose: "",
         balance: state.balance - state.loan
       }
+    case "account/convertingCurrency":
+      return {
+        ...state,
+        isLoading: true
+      }
     default:
       // In simple reducer, we return error. Here just state.
       return state
@@ -39,8 +46,21 @@ export default function accountReducer(state = initialStateAccount, action) {
 
 // Add actions creators for account.
 // Needed so that we wouldn't write action types manually each time.
-export function deposit(amount) {
-  return { type: "account/deposit", payload: amount }
+export function deposit(amount, currency) {
+  if (currency === "USD") return { type: "account/deposit", payload: amount }
+
+  // Middleware function
+  return async function (dispatch) {
+    dispatch({ type: "account/convertingCurrency" })
+
+    // API call
+    const res = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`)
+    const data = await res.json()
+    const converted = data.rates.USD
+
+    // dispatch an action
+    dispatch({ type: "account/deposit", payload: converted })
+  }
 }
 
 export function withdraw(amount) {
