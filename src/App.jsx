@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "./pages/ReduxIntro/store.js";
+import toolkitStore from "./pages/ReduxToolkitIntro/store.js";
 const ReactFacts = lazy(() => import('./Pages/ReactFacts/ReactFacts.jsx'));
 const TravelJournal = lazy(() => import('./Pages/TravelJournal/TravelJournal.jsx'));
 const ChefClaude = lazy(() => import('./Pages/ChefClaude/ChefClaude.jsx'));
@@ -18,6 +19,7 @@ const DateCounter = lazy(() => import('./Pages/DateCounter/DateCounter.jsx'));
 const TravelList = lazy(() => import('./Pages/TravelList/TravelList.jsx'));
 const WorkoutTimer = lazy(() => import('./Pages/WorkoutTimer/WorkoutTimer.jsx'));
 const ReduxIntro = lazy(() => import('./pages/ReduxIntro/ReduxIntro.jsx'));
+const ReduxToolkitIntro = lazy(() => import('./pages/ReduxToolkitIntro/ReduxToolkitIntro.jsx'));
 import SharedLayout from './Components/SharedLayout/SharedLayout.jsx';
 import { QuizProvider } from "./pages/ReactQuiz/contexts/QuizContext";
 
@@ -41,6 +43,10 @@ function App() {
           <Route path="redux-intro" element={
             <Provider store={store}>
               <ReduxIntro/>
+            </Provider>}/>
+          <Route path="redux-toolkit-intro" element={
+            <Provider store={toolkitStore}>
+              <ReduxToolkitIntro/>
             </Provider>}/>
           <Route path="react-quiz" element={
             <QuizProvider>

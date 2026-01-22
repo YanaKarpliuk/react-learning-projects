@@ -13,6 +13,7 @@
   "dependencies": {
     "@faker-js/faker": "^10.1.0",
     "@huggingface/inference": "^4.6.1",
+    "@reduxjs/toolkit": "^2.11.2",
     "html-entities": "^2.6.0",
     "json-server": "^1.0.0-beta.3",
     "nanoid": "^5.1.5",

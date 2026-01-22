@@ -56,6 +56,9 @@ export default function Home() {
             <li>
               <NavLink to="/redux-intro" end>Redux Intro</NavLink>
             </li>
+            <li>
+              <NavLink to="/redux-toolkit-intro" end>Redux Toolkit Intro</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
